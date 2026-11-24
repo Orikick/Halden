@@ -1,0 +1,61 @@
+.heading {
+  margin-bottom: 1rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 3px solid var(--ink);
+  font-size: var(--step-3);
+}
+
+.list {
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.item {
+  border-bottom: 1px solid var(--line);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  // Plus that turns into a minus when the answer is open.
+  &::after {
+    content: '+';
+    flex: none;
+    width: 1.5rem;
+    color: var(--enamel);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+  }
+
+  &:hover {
+    background: var(--paper);
+  }
+}
+
+.item[open] > .question::after {
+  content: '−';
+}
+
+.answer {
+  max-width: 44rem;
+  padding: 0 1rem 1rem;
+  color: var(--ink-soft);
+}

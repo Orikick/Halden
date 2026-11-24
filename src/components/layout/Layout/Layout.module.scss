@@ -1,0 +1,14 @@
+@use '../../../styles/mixins' as *;
+
+.main {
+  flex: 1;
+}
+
+.fallback {
+  @include container;
+
+  // Reserve height so the footer does not jump while a route chunk loads.
+  min-height: 60vh;
+  padding-block: 2.5rem;
+  color: var(--muted);
+}

@@ -1,0 +1,38 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include container;
+
+  padding-block: 1.5rem 3.5rem;
+
+  @include mq(md) {
+    padding-block: 2.5rem 5rem;
+  }
+}
+
+.title {
+  font-size: var(--step-4);
+}
+
+.layout {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1rem;
+
+  @include mq(lg) {
+    grid-template-columns: minmax(0, 1fr) 22rem;
+    gap: 3.5rem;
+    align-items: start;
+  }
+}
+
+.items {
+  border-top: 3px solid var(--ink);
+}
+
+.aside {
+  @include mq(lg) {
+    position: sticky;
+    top: 1.5rem;
+  }
+}

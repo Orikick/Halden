@@ -1,0 +1,165 @@
+@use 'mixins' as *;
+
+:root {
+  // Colour
+  --ink: #16211d;
+  --ink-soft: #2c3a34;
+  --muted: #55625c;
+  --paper: #f4f6f1;
+  --surface: #ffffff;
+  --panel: #e7ebe3;
+  --line: #cfd6cb;
+  --enamel: #1d46c7;
+  --enamel-dark: #16359a;
+  --tag: #ffd84a;
+  --danger: #b42318;
+  --danger-bg: #fdecea;
+  --success: #17633f;
+  --success-bg: #e3f3ea;
+  --focus: #1d46c7;
+
+  // Type
+  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.125rem;
+  --step-2: 1.375rem;
+  --step-3: 1.75rem;
+  --step-4: clamp(1.875rem, 1.5rem + 1.6vw, 2.5rem);
+  --step-5: clamp(2.75rem, 1.5rem + 5.6vw, 5.25rem);
+
+  // Layout
+  // 90rem = 1440px of content on large desktop screens.
+  --container: 90rem;
+  --gutter: 1rem;
+  --radius-s: 4px;
+  --radius-m: 8px;
+
+  @include mq(md) {
+    --gutter: 1.5rem;
+  }
+
+  @include mq(xl) {
+    --gutter: 2rem;
+  }
+
+  @include mq(xxl) {
+    --gutter: 2.5rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+fieldset {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+// :where() keeps this reset at zero specificity, so component classes can
+// still add their own padding to lists.
+:where(ul[role='list'], ol[role='list']) {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+// Programmatic focus targets (main, confirmation heading) should not show a ring.
+[tabindex='-1']:focus {
+  outline: none;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,84 @@
+@use '../../../styles/mixins' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 3px solid var(--ink);
+}
+
+.step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2.75rem;
+  padding-inline: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.disabled {
+  color: var(--muted);
+  opacity: 0.7;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Narrow screens get "Page 2 of 17"; wider screens get numbered links.
+.summary {
+  font-size: var(--step--1);
+  font-weight: 600;
+
+  @include mq(md) {
+    display: none;
+  }
+}
+
+.pages {
+  display: none;
+
+  @include mq(md) {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+
+.page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border-radius: var(--radius-s);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--panel);
+  }
+}
+
+.current {
+  background: var(--ink);
+  color: #fff;
+
+  &:hover {
+    background: var(--ink);
+  }
+}
+
+.gap {
+  min-width: 1.5rem;
+  color: var(--muted);
+  text-align: center;
+}

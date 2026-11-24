@@ -1,0 +1,115 @@
+@use '../../../styles/mixins' as *;
+
+.details {
+  display: grid;
+  gap: 2.5rem;
+
+  @include mq(md) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  @include mq(xl) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+}
+
+.heading {
+  margin-bottom: 1rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 3px solid var(--ink);
+  font-size: var(--step-3);
+}
+
+.subheading {
+  margin-top: 1.25rem;
+  font-family: var(--font-body);
+  font-size: var(--step-1);
+  font-weight: 700;
+  letter-spacing: 0;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.text {
+  max-width: 40rem;
+  margin-top: 0.25rem;
+  color: var(--ink-soft);
+}
+
+.tips {
+  display: grid;
+  gap: 0.375rem;
+  max-width: 40rem;
+  margin-top: 0.375rem;
+  padding-left: 1.25rem;
+  color: var(--ink-soft);
+
+  li::marker {
+    color: var(--enamel);
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding-inline: 0.875rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: none;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+
+  &:hover {
+    background: var(--ink);
+    color: #fff;
+  }
+}
+
+.table {
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.75rem;
+
+  @include mq(sm) {
+    grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+    gap: 1rem;
+    padding-inline: 1rem;
+  }
+  border-bottom: 1px solid var(--line);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  dt {
+    color: var(--muted);
+  }
+
+  dd {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+}

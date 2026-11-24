@@ -1,0 +1,39 @@
+@use '../../../styles/mixins' as *;
+
+.stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1.5px solid var(--ink-soft);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+}
+
+.button {
+  @include button-reset;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  min-height: 2.75rem;
+
+  &:hover:not(:disabled) {
+    background: var(--panel);
+  }
+
+  &:disabled {
+    color: var(--muted);
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  border-inline: 1.5px solid var(--line);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}

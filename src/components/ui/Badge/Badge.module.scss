@@ -1,0 +1,29 @@
+.badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-s);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.neutral {
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.sale {
+  background: var(--ink);
+  color: #fff;
+}
+
+.success {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.warning {
+  background: var(--danger-bg);
+  color: var(--danger);
+}

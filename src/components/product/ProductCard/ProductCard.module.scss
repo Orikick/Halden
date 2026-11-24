@@ -1,0 +1,129 @@
+@use '../../../styles/mixins' as *;
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+
+  &:hover {
+    border-color: var(--ink);
+  }
+}
+
+// The product stands on a shelf: a tinted bay with a solid edge, and the
+// price label hangs over that edge.
+.shelf {
+  position: relative;
+  border-bottom: 3px solid var(--ink);
+  border-radius: calc(var(--radius-m) - 1.5px) calc(var(--radius-m) - 1.5px) 0 0;
+  background: var(--panel);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 8%;
+  object-fit: contain;
+}
+
+.discount {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.price {
+  position: absolute;
+  bottom: -0.95rem;
+  left: 0.5rem;
+  z-index: 1;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.375rem;
+  padding: 1.5rem 0.75rem 0;
+
+  @include mq(md) {
+    padding-inline: 1rem;
+  }
+}
+
+.maker {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.title {
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-wrap: pretty;
+}
+
+.link {
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-m);
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  // Draw the focus ring around the whole card, not just the text.
+  &:focus-visible {
+    outline: none;
+
+    &::after {
+      @include focus-ring;
+    }
+  }
+}
+
+// Two lines of the description; the full text is on the product page.
+.description {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem 0.625rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
+// Sits above the stretched link so the button stays clickable.
+.action {
+  position: relative;
+  z-index: 1;
+  padding: 0.75rem;
+
+  @include mq(md) {
+    padding: 0.875rem 1rem 1rem;
+  }
+}

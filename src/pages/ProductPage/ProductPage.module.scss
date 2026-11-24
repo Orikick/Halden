@@ -1,0 +1,64 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include container;
+
+  padding-block: 1.25rem 3.5rem;
+
+  @include mq(md) {
+    padding-block: 2rem 5rem;
+  }
+}
+
+.product {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: 1.25rem;
+
+  @include mq(md) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @include mq(xl) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+}
+
+.section {
+  margin-top: 3.5rem;
+
+  @include mq(md) {
+    margin-top: 5rem;
+  }
+}
+
+.reviewsTitle {
+  margin-bottom: 1.5rem;
+  font-size: var(--step-3);
+}
+
+// Loading skeleton: mirrors the two-column product layout.
+.gallerySkeleton {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.imageSkeleton {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.thumbsSkeleton {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.infoSkeleton {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}

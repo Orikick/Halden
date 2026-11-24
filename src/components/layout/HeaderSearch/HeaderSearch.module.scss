@@ -1,0 +1,68 @@
+@use '../../../styles/mixins' as *;
+
+// One bordered field with the submit button set into its right edge.
+.search {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 3rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+
+  &:focus-within {
+    @include focus-ring;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 0.875rem;
+  color: var(--muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.75rem 0.5rem 2.75rem;
+  border: 0;
+  border-radius: var(--radius-m) 0 0 var(--radius-m);
+  background: transparent;
+  color: var(--ink);
+  font-size: 1rem;
+
+  &::placeholder {
+    color: var(--muted);
+    opacity: 1;
+  }
+
+  // The whole field shows the focus ring instead (see :focus-within above).
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.submit {
+  @include button-reset;
+
+  flex: none;
+  margin: 0.25rem;
+  padding-inline: 1rem;
+  border-radius: var(--radius-s);
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+
+  &:hover {
+    background: var(--ink-soft);
+  }
+
+  &:focus-visible {
+    outline-color: var(--tag);
+    outline-offset: 0;
+  }
+}

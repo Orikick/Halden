@@ -1,0 +1,283 @@
+@use '../../../styles/mixins' as *;
+
+.header {
+  background: var(--surface);
+  border-bottom: 3px solid var(--ink);
+}
+
+// Tier 1: service strip ------------------------------------------------------
+
+.strip {
+  // Blue focus rings would vanish on the dark background.
+  --focus: var(--tag);
+
+  background: var(--ink);
+  color: #e6ebe4;
+  font-size: var(--step--1);
+}
+
+.stripInner {
+  @include container;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 2.25rem;
+
+  @include mq(md) {
+    justify-content: flex-start;
+  }
+
+  a {
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+// Only the first promise fits on small screens.
+.stripExtra {
+  display: none;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.stripSupport {
+  @include mq(md) {
+    margin-left: auto;
+  }
+}
+
+// Tier 2: logo, search, cart ---------------------------------------------------
+
+.barInner {
+  @include container;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'menu logo cart'
+    'search search search';
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding-block: 0.75rem 1rem;
+
+  @include mq(md) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: 'logo search cart';
+    gap: 2rem;
+    min-height: 5.5rem;
+    padding-block: 1rem;
+  }
+
+  @include mq(xl) {
+    gap: 3rem;
+  }
+}
+
+.menuButton {
+  @include button-reset;
+
+  grid-area: menu;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: -0.5rem;
+  border-radius: var(--radius-s);
+
+  &:hover {
+    background: var(--panel);
+  }
+
+  @include mq(md) {
+    display: none;
+  }
+}
+
+// Wordmark with a small shelf-label mark in front of it.
+.logo {
+  grid-area: logo;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 2.75rem;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-decoration: none;
+
+  &::before {
+    content: '';
+    width: 1.125rem;
+    height: 1.625rem;
+    background: var(--tag);
+    clip-path: polygon(0.375rem 0, 100% 0, 100% 100%, 0.375rem 100%, 0 calc(100% - 0.375rem), 0 0.375rem);
+  }
+
+  @include mq(md) {
+    font-size: 2.5rem;
+
+    &::before {
+      width: 1.375rem;
+      height: 2rem;
+    }
+  }
+}
+
+.search {
+  grid-area: search;
+
+  @include mq(md) {
+    max-width: 40rem;
+  }
+}
+
+.cart {
+  grid-area: cart;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding-inline: 0.75rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-m);
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--panel);
+  }
+
+  @include mq(md) {
+    padding-inline: 1rem;
+  }
+}
+
+// On small screens the icon and the count say enough.
+.cartLabel {
+  @include visually-hidden;
+
+  @include mq(sm) {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  padding-inline: 0.4rem;
+  border-radius: 999px;
+  background: var(--tag);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.countEmpty {
+  background: var(--panel);
+  color: var(--ink-soft);
+}
+
+// Tier 3: departments ------------------------------------------------------------
+
+// Mobile: a vertical list toggled by the menu button.
+.nav {
+  display: none;
+  border-top: 1px solid var(--line);
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.navOpen {
+  display: block;
+}
+
+.navList {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  padding-block: 0.25rem 0.75rem;
+
+  // From 768px: a row of tabs. It wraps to a second line rather than
+  // hiding departments off-screen on tablets.
+  @include mq(md) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 0.25rem;
+    padding-block: 0.25rem;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: 0.25rem;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  &[aria-current='page'] {
+    text-decoration: underline;
+    text-decoration-color: var(--enamel);
+    text-decoration-thickness: 3px;
+  }
+
+  @include mq(md) {
+    min-height: 3rem;
+    padding-inline: 0.75rem;
+    border-bottom: 0;
+    border-radius: var(--radius-s);
+
+    &:hover {
+      background: var(--panel);
+      text-decoration: none;
+    }
+
+    &[aria-current='page'] {
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  @include mq(xl) {
+    padding-inline: 1rem;
+  }
+}
+
+// Line the first tab's text up with the logo above it.
+.navList > li:first-child .navLink {
+  @include mq(md) {
+    margin-left: -0.75rem;
+  }
+
+  @include mq(xl) {
+    margin-left: -1rem;
+  }
+}

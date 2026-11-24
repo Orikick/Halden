@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.heading {
+  font-size: var(--step-3);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+.empty {
+  color: var(--muted);
+}

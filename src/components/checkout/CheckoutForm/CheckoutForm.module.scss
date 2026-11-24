@@ -1,0 +1,114 @@
+@use '../../../styles/mixins' as *;
+
+.form {
+  display: grid;
+  gap: 2rem;
+}
+
+.section {
+  min-width: 0;
+}
+
+.legend {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.fields {
+  display: grid;
+  gap: 1.125rem;
+  max-width: 34rem;
+}
+
+.pair {
+  display: grid;
+  gap: 1.125rem;
+
+  @include mq(sm) {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.radios {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 34rem;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.625rem 0.875rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  cursor: pointer;
+
+  input {
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    accent-color: var(--enamel);
+  }
+
+  &:hover {
+    border-color: var(--muted);
+  }
+
+  &:has(input:checked) {
+    border-color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--ink);
+  }
+}
+
+.radioText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.radioLabel {
+  font-weight: 600;
+}
+
+.radioDescription {
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.radioAside {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  max-width: 34rem;
+  margin-top: -1rem;
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.errorSummary {
+  max-width: 34rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--danger);
+  border-radius: var(--radius-s);
+  background: var(--danger-bg);
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.submit {
+  justify-self: start;
+  min-width: 14rem;
+}

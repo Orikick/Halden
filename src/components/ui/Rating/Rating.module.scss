@@ -1,0 +1,17 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.star {
+  flex: none;
+  color: var(--ink);
+}
+
+.count {
+  color: var(--muted);
+  font-weight: 400;
+}

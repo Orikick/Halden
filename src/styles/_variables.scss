@@ -1,0 +1,10 @@
+// Breakpoints are the only values that must live in Sass (media queries
+// cannot read custom properties). Colours, type and spacing are CSS custom
+// properties declared in global.scss.
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1440px,
+);

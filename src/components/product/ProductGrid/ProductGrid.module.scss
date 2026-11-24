@@ -1,0 +1,23 @@
+@use '../../../styles/mixins' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 0.75rem;
+
+  @include mq(md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  // Wide desktops: one more column so cards keep a comfortable size.
+  @include mq(xxl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.wide {
+  @include mq(lg) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
